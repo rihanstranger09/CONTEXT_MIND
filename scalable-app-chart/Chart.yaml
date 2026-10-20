@@ -1,0 +1,6 @@
+apiVersion: v2
+name: scalable-app-chart
+description: A scalable Flask + Streamlit task application backed by PostgreSQL
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "scalable-app-chart.fullname" . }}-config
+  labels:
+    {{- include "scalable-app-chart.labels" . | nindent 4 }}
+data:
+  POSTGRES_HOST: {{ include "scalable-app-chart.fullname" . }}-postgres
+  POSTGRES_PORT: {{ .Values.postgresql.servicePort | quote }}
+  POSTGRES_DB: {{ .Values.postgresql.database | quote }}
+  POSTGRES_USER: {{ .Values.postgresql.username | quote }}
+  API_URL: http://{{ include "scalable-app-chart.fullname" . }}-backend:{{ .Values.backend.service.port }}
